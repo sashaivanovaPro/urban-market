@@ -1,23 +1,19 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { toggleLike, deleteProduct } from "../../store/slices/productsSlice";
 import { Product } from "../../types/product";
 import "./ProductCard.css";
 import { Heart, HeartOff, Trash2 } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
+  onLike: () => void;
+  onDelete: () => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const dispatch = useDispatch();
-  const handleLike = () => {
-    dispatch(toggleLike(product.id));
-  };
-
-  const handleRemove = () => {
-    dispatch(deleteProduct(product.id));
-  };
+const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  onLike,
+  onDelete,
+}) => {
   return (
     <div className="product-card">
       <div className="product-card__image">
@@ -34,12 +30,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             className={`product-card__like-btn ${
               product.isLiked ? "active" : ""
             }`}
-            onClick={handleLike}
+            onClick={onLike}
           >
             {product.isLiked ? <Heart /> : <HeartOff />}
           </button>
 
-          <button className="product-card__delete-btn" onClick={handleRemove}>
+          <button className="product-card__delete-btn" onClick={onDelete}>
             <Trash2 />
           </button>
         </div>
