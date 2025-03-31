@@ -53,6 +53,18 @@
   margin-bottom: var(--spacing-md);
 }
 
+.product-card__original-price {
+  text-decoration: line-through;
+  color: var(--color-text-light);
+  margin-right: var(--spacing-sm);
+  font-size: 0.9em;
+}
+
+.product-card__discount-price {
+  color: var(--color-primary);
+  font-weight: var(--font-bold);
+}
+
 .product-card__actions {
   display: flex;
   justify-content: space-between;

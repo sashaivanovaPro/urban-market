@@ -6,15 +6,21 @@
 }
 
 .navigation a {
-  padding: var(--spacing-sm) var(--spacing-md);
-  background-color: var(--color-accent);
-  color: var(--color-text);
-  border-radius: var(--radius-sm);
-  transition: background-color var(--transition-fast);
+  color: var(--color-text-light);
+  font-weight: var(--font-medium);
+  font-style: italic;
+  text-decoration: none;
+  padding: var(--spacing-sm) var(--spacing-sm);
+  transition: all var(--transition-fast);
+  cursor: pointer;
 }
 
 .navigation a:hover {
-  background-color: var(--color-secondary);
-  color: white;
-  text-decoration: none;
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+.navigation a.active {
+  color: var(--color-secondary);
+  font-weight: var(--font-bold);
 }
