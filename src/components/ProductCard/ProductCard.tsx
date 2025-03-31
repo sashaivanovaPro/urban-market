@@ -2,6 +2,7 @@ import React from "react";
 import { Product } from "../../types/product";
 import "./ProductCard.css";
 import { Heart, HeartOff, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   product: Product;
@@ -9,13 +10,22 @@ interface ProductCardProps {
   onDelete: () => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({
+export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   onLike,
   onDelete,
 }) => {
+  const navigate = useNavigate();
+  const handleClick = (event: React.MouseEvent) => {
+    if (!(event.target as HTMLElement).closest(".product-card__actions")) {
+      event.stopPropagation();
+      console.log("ProductCard clicked");
+      navigate(`/products/${product.id}`);
+    }
+  };
+
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={handleClick}>
       <div className="product-card__image">
         <img src={product.thumbnail} alt={product.title} />
       </div>
@@ -32,7 +42,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             }`}
             onClick={onLike}
           >
-            {product.isLiked ? <Heart /> : <HeartOff />}
+            {product.isLiked ? <Heart className="icon-heart" /> : <HeartOff />}
           </button>
 
           <button className="product-card__delete-btn" onClick={onDelete}>
