@@ -19,12 +19,18 @@ interface ProductsState {
   items: ProductDetails[];
   loading: boolean;
   error: string | null;
+  filter: {
+    showLikedProducts: boolean;
+  };
 }
 
 const initialState: ProductsState = {
   items: [],
   loading: false,
   error: null,
+  filter: {
+    showLikedProducts: false,
+  },
 };
 
 const productsSlice = createSlice({
@@ -42,6 +48,9 @@ const productsSlice = createSlice({
       state.items = state.items.filter(
         (product) => product.id !== action.payload
       );
+    },
+    showLikedProducts: (state, action: PayloadAction<boolean>) => {
+      state.filter.showLikedProducts = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -66,6 +75,7 @@ const productsSlice = createSlice({
   },
 });
 
-export const { toggleLike, deleteProduct } = productsSlice.actions;
+export const { toggleLike, deleteProduct, showLikedProducts } =
+  productsSlice.actions;
 
 export default productsSlice.reducer;

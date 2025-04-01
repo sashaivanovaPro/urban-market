@@ -8,12 +8,17 @@ import {
 } from "../../store/slices/productsSlice";
 import ProductCard from "../ProductCard/ProductCard";
 import "./ProductList.css";
+import ProductFilter from "../ProductFilter/ProductFilter.tsx";
 
 const ProductList: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { items, loading, error } = useAppSelector(
+  const { items, loading, error, filter } = useAppSelector(
     (state: RootState) => state.products
   );
+
+  const filteredProducts = filter.showLikedProducts
+    ? items.filter((product) => product.isLiked)
+    : items;
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -28,16 +33,19 @@ const ProductList: React.FC = () => {
   }
 
   return (
-    <div className="product-list">
-      {items.map((product) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          onLike={() => dispatch(toggleLike(product.id))}
-          onDelete={() => dispatch(deleteProduct(product.id))}
-        />
-      ))}
-    </div>
+    <>
+      <ProductFilter />
+      <div className="product-list">
+        {filteredProducts.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            onLike={() => dispatch(toggleLike(product.id))}
+            onDelete={() => dispatch(deleteProduct(product.id))}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
