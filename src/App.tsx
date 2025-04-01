@@ -8,7 +8,7 @@ import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/urban-market">
       <div className="app">
         <Header />
         <main className="app-main">
