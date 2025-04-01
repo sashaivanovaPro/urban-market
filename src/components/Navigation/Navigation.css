@@ -8,6 +8,7 @@
 .navigation a {
   color: var(--color-text-light);
   font-weight: var(--font-medium);
+  font-size: var(--text-size-large);
   font-style: italic;
   text-decoration: none;
   padding: var(--spacing-sm) var(--spacing-sm);

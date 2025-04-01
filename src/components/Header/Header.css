@@ -1,0 +1,32 @@
+/* src/components/Header/Header.css */
+.app-header {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+.logo-link h1 {
+  margin: 0;
+}
+
+.logo-link h1:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 576px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,9 +1,9 @@
 .product-filter {
-  margin: var(--spacing-lg) 0;
   padding: var(--spacing-md);
   background-color: var(--color-card);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-md);
 }
 
 .product-filter__buttons {

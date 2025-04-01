@@ -116,7 +116,6 @@ body {
 #root {
   max-width: var(--innerWidth);
   margin: 0 auto;
-  padding: var(--spacing-md);
 }
 
 h1,
