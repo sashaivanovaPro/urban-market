@@ -1,28 +1,26 @@
-Ru
+> Ru
 
 # Urban Market
 
 E-commerce платформа, построенная с использованием React, TypeScript и Redux Toolkit.
 
-### Текущая реализация
+## Реализованные функции
 
-- Настройка хранилища Redux с использованием Redux Toolkit
-- Интеграция API с использованием Axios
-- Список продуктов с реальными данными из DummyJSON API
-- Карточки продуктов с функциональностью лайк/анлайк
-- Функциональность удаления продукта
+- Просмотр списка продуктов с карточным интерфейсом
+- Подробная страница продукта
+- Возможность добавлять продукты в избранное
+- Удаление продуктов из каталога
 
-### Предстоящие функции
+## Текущие задачи в разработке
 
-- Страница детальной информации о продукте
-- Форма создания продукта
-- Фильтрация по избранным
+- Фильтрация продуктов по избранному
+- Создание новых продуктов
 
 ### Опционально
 
+- Фильтрация продуктов по разным категориям
+- Поиск по продуктам
 - Пагинация списка
-- Фильтрация продуктов по категория
-- Реализация поиска по каталогу
 
 ## Технический стек
 
@@ -79,31 +77,29 @@ src/
 
 > Примечание: В настоящее время проект находится в активной разработке. Функциональность и детали реализации могут измениться по мере его развития.
 
-> EN
+> En
 
 # Urban Market
 
 A modern, responsive e-commerce platform built with React, TypeScript, and Redux Toolkit.
 
-## Current Implementation
+## Implemented Features
 
-- Redux store setup with Redux Toolkit
-- API integration using Axios
-- Product listing with real data from DummyJSON API
-- Product cards with like/unlike functionality
-- Delete product functionality
-
-## Upcoming Features
-
+- Product catalog with card-based UI
 - Product details page
-- Create product form
-- Filtering by favorites
+- Add products to favorites
+- Delete products from catalog
 
-### Optional
+## In Progress
 
-- Search functionality
-- Category filtering
+- Filter products by favorites
+- Create and edit products
+
+## Optional
+
 - Pagination
+- Search functionality
+- Filter products by category and favorites
 
 ## Tech Stack
 

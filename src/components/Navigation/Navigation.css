@@ -1,0 +1,26 @@
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+}
+
+.navigation a {
+  color: var(--color-text-light);
+  font-weight: var(--font-medium);
+  font-style: italic;
+  text-decoration: none;
+  padding: var(--spacing-sm) var(--spacing-sm);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.navigation a:hover {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+.navigation a.active {
+  color: var(--color-secondary);
+  font-weight: var(--font-bold);
+}

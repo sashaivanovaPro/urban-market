@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Product } from "../../types/product";
+import { ProductDetails } from "../../types/product";
 import { productService } from "../../services/productService";
 
 export const fetchProducts = createAsyncThunk("products/fetchAll", async () => {
@@ -16,7 +16,7 @@ export const fetchProductById = createAsyncThunk(
 );
 
 interface ProductsState {
-  items: Product[];
+  items: ProductDetails[];
   loading: boolean;
   error: string | null;
 }
@@ -53,7 +53,10 @@ const productsSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = action.payload.products;
+        state.items = action.payload.products.map((product) => ({
+          ...product,
+          isLiked: false,
+        })) as ProductDetails[];
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
