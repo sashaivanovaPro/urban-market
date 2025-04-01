@@ -6,6 +6,8 @@ E-commerce платформа, построенная с использован�
 
 ## Реализованные функции
 
+- Фильтрация продуктов по избранному (**новое**)
+- Фильтрация продуктов с выгодной ценой(скидка > 15%) (**новое**)
 - Просмотр списка продуктов с карточным интерфейсом
 - Подробная страница продукта
 - Возможность добавлять продукты в избранное
@@ -13,12 +15,10 @@ E-commerce платформа, построенная с использован�
 
 ## Текущие задачи в разработке
 
-- Фильтрация продуктов по избранному
 - Создание новых продуктов
 
 ### Опционально
 
-- Фильтрация продуктов по разным категориям
 - Поиск по продуктам
 - Пагинация списка
 
@@ -85,6 +85,8 @@ A modern, responsive e-commerce platform built with React, TypeScript, and Redux
 
 ## Implemented Features
 
+- Filter products by favorites (**new**)
+- Filter products by best discount(more than 15%) (**new**)
 - Product catalog with card-based UI
 - Product details page
 - Add products to favorites
@@ -92,14 +94,12 @@ A modern, responsive e-commerce platform built with React, TypeScript, and Redux
 
 ## In Progress
 
-- Filter products by favorites
 - Create and edit products
 
 ## Optional
 
 - Pagination
 - Search functionality
-- Filter products by category and favorites
 
 ## Tech Stack
 
