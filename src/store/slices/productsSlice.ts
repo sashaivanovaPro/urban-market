@@ -45,6 +45,12 @@ const productsSlice = createSlice({
       if (product) {
         product.isLiked = !product.isLiked;
       }
+
+      const likedProducts = state.items
+        .filter((item) => item.isLiked)
+        .map((item) => item.id);
+      console.log(likedProducts);
+      localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
     },
     deleteProduct: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter(
@@ -67,9 +73,14 @@ const productsSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
+
+        const likedProductsJSON = localStorage.getItem("likedProducts");
+        const likedProducts = likedProductsJSON
+          ? JSON.parse(likedProductsJSON)
+          : [];
         state.items = action.payload.products.map((product) => ({
           ...product,
-          isLiked: false,
+          isLiked: likedProducts.includes(product.id),
         })) as ProductDetails[];
       })
       .addCase(fetchProducts.rejected, (state, action) => {
