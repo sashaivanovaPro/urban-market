@@ -1,16 +1,105 @@
+> Ru
+
+# Urban Market
+
+E-commerce платформа, построенная с использованием React, TypeScript и Redux Toolkit.
+
+## Реализованные функции
+
+- Просмотр списка продуктов с карточным интерфейсом
+- Подробная страница продукта
+- Возможность добавлять продукты в избранное
+- Удаление продуктов из каталога
+
+## Текущие задачи в разработке
+
+- Фильтрация продуктов по избранному
+- Создание новых продуктов
+
+### Опционально
+
+- Фильтрация продуктов по разным категориям
+- Поиск по продуктам
+- Пагинация списка
+
+## Технический стек
+
+- React 18
+- TypeScript
+- Redux Toolkit для управления состоянием
+- React Router для навигации
+- Axios для API запросов
+- DummyJSON для тестовых данных
+
+## Начало работы
+
+### Предварительные требования
+
+- Node.js (v14.0.0 или выше)
+- npm (v6.0.0 или выше)
+
+### Установка
+
+1. Клонировать репозиторий
+
+```bash
+git clone https://github.com/yourusername/urban-market.git
+cd urban-market
+```
+
+2. Установить зависимости
+
+```bash
+npm install
+```
+
+3. Запустить сервер разработки
+
+```bash
+npm install
+```
+
+## Структура проекта
+
+src/  
+├── components/ # Переиспользуемые UI компоненты  
+├── pages/ # Компоненты страниц  
+├── store/ # Настройка Redux store и слайсы  
+├── services/ # API сервисы  
+├── types/ # Определения TypeScript типов  
+├── hooks/ # Пользовательские React hooks  
+├── utils/ # Вспомогательные функции  
+└── assets/ # Статические ресурсы
+
+### Лицензия
+
+Этот проект распространяется по лицензии MIT.
+
+> Примечание: В настоящее время проект находится в активной разработке. Функциональность и детали реализации могут измениться по мере его развития.
+
+> En
+
 # Urban Market
 
 A modern, responsive e-commerce platform built with React, TypeScript, and Redux Toolkit.
 
-## Features
+## Implemented Features
 
 - Product catalog with card-based UI
 - Product details page
 - Add products to favorites
-- Filter products by category and favorites
-- Search functionality
+- Delete products from catalog
+
+## In Progress
+
+- Filter products by favorites
 - Create and edit products
-- Responsive design for desktop and mobile
+
+## Optional
+
+- Pagination
+- Search functionality
+- Filter products by category and favorites
 
 ## Tech Stack
 
@@ -18,7 +107,6 @@ A modern, responsive e-commerce platform built with React, TypeScript, and Redux
 - TypeScript
 - Redux Toolkit for state management
 - React Router for navigation
-- Styled Components for styling
 - Axios for API requests
 - DummyJSON for mock data
 
