@@ -16,9 +16,14 @@ const ProductList: React.FC = () => {
     (state: RootState) => state.products
   );
 
-  const filteredProducts = filter.showLikedProducts
-    ? items.filter((product) => product.isLiked)
-    : items;
+  let filteredProducts = items;
+  if (filter.showLikedOnly) {
+    filteredProducts = items.filter((product) => product.isLiked);
+  } else if (filter.bestPrice) {
+    filteredProducts = items.filter(
+      (product) => product.discountPercentage > 15
+    );
+  }
 
   useEffect(() => {
     dispatch(fetchProducts());

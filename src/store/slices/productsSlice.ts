@@ -20,7 +20,8 @@ interface ProductsState {
   loading: boolean;
   error: string | null;
   filter: {
-    showLikedProducts: boolean;
+    showLikedOnly: boolean;
+    bestPrice: boolean;
   };
 }
 
@@ -29,7 +30,8 @@ const initialState: ProductsState = {
   loading: false,
   error: null,
   filter: {
-    showLikedProducts: false,
+    showLikedOnly: false,
+    bestPrice: false,
   },
 };
 
@@ -50,7 +52,10 @@ const productsSlice = createSlice({
       );
     },
     showLikedProducts: (state, action: PayloadAction<boolean>) => {
-      state.filter.showLikedProducts = action.payload;
+      state.filter.showLikedOnly = action.payload;
+    },
+    showTheBestDiscount: (state, action: PayloadAction<boolean>) => {
+      state.filter.bestPrice = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -75,7 +80,11 @@ const productsSlice = createSlice({
   },
 });
 
-export const { toggleLike, deleteProduct, showLikedProducts } =
-  productsSlice.actions;
+export const {
+  toggleLike,
+  deleteProduct,
+  showLikedProducts,
+  showTheBestDiscount,
+} = productsSlice.actions;
 
 export default productsSlice.reducer;

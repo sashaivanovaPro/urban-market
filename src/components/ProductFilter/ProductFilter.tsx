@@ -1,32 +1,48 @@
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { RootState } from "../../store/store";
 import "./ProductFilter.css";
-import { showLikedProducts } from "../../store/slices/productsSlice";
+import {
+  showTheBestDiscount,
+  showLikedProducts,
+} from "../../store/slices/productsSlice";
 
 const ProductFilter: React.FC = () => {
   const dispatch = useAppDispatch();
-  const showLikedOnly = useAppSelector(
-    (state: RootState) => state.products.filter.showLikedProducts
+  const { showLikedOnly, bestPrice } = useAppSelector(
+    (state: RootState) => state.products.filter
   );
-
-  const handleFilterChange = () => {
-    dispatch(showLikedProducts(!showLikedOnly));
-  };
 
   return (
     <div className="product-filter">
       <div className="product-filter__buttons">
         <button
-          className={`product-filter__button ${!showLikedOnly ? "active" : ""}`}
-          onClick={() => dispatch(showLikedProducts(false))}
+          className={`product-filter__button ${
+            !showLikedOnly && !bestPrice ? "active" : ""
+          }`}
+          onClick={() => {
+            dispatch(showLikedProducts(false));
+            dispatch(showTheBestDiscount(false));
+          }}
         >
           All Products
         </button>
         <button
           className={`product-filter__button ${showLikedOnly ? "active" : ""}`}
-          onClick={() => dispatch(showLikedProducts(true))}
+          onClick={() => {
+            dispatch(showLikedProducts(true));
+            dispatch(showTheBestDiscount(false));
+          }}
         >
           Favorites
+        </button>
+        <button
+          className={`product-filter__button ${bestPrice ? "active" : ""}`}
+          onClick={() => {
+            dispatch(showTheBestDiscount(true));
+            dispatch(showLikedProducts(false));
+          }}
+        >
+          Super Discount
         </button>
       </div>
     </div>

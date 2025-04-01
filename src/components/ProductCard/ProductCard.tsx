@@ -27,6 +27,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div className="product-card" onClick={handleClick}>
       <div className="product-card__image">
+        {product.discountPercentage > 15 && (
+          <div className="product-card__discount-badge">
+            -{Math.round(product.discountPercentage)}%
+          </div>
+        )}
         <img src={product.thumbnail} alt={product.title} />
       </div>
 
