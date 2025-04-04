@@ -1,0 +1,15 @@
+.reset-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: var(--font-medium);
+  transition: all var(--transition-fast);
+}
+
+.reset-button:hover {
+  background-color: var(--color-secondary);
+  color: white;
+}

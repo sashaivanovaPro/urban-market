@@ -5,6 +5,7 @@ import {
   showTheBestDiscount,
   showLikedProducts,
 } from "../../store/slices/productsSlice";
+import ResetButton from "../LocalStorageResetButton/ResetButton";
 
 const ProductFilter: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -45,6 +46,7 @@ const ProductFilter: React.FC = () => {
           Super Discount
         </button>
       </div>
+      <ResetButton />
     </div>
   );
 };
