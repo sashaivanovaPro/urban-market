@@ -24,7 +24,23 @@ export const createProductSchema = z.object({
     .min(0, "Rating must be at least 0")
     .max(5, "Rating cannot exceed 5")
     .optional(),
-  images: z.string().optional(),
+  images: z
+    .string()
+    .optional()
+    .transform((val) => (val ? val.split(",").map((url) => url.trim()) : [])),
 });
 
 export type CreateProductFormData = z.infer<typeof createProductSchema>;
+
+export type ProductFormData = {
+  title: string;
+  description: string;
+  price: string | number;
+  category: string;
+  brand: string;
+  stock: string | number;
+  thumbnail: string;
+  discountPercentage?: string | number;
+  rating?: string | number;
+  images: string;
+};

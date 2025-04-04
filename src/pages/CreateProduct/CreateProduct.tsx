@@ -1,7 +1,10 @@
 // src/pages/CreateProduct/CreateProduct.tsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createProductSchema } from "../../types/createProductSchema";
+import {
+  createProductSchema,
+  ProductFormData,
+} from "../../types/createProductSchema";
 import "./CreateProduct.css";
 import { useAppDispatch } from "../../hooks/redux";
 import { z } from "zod";
@@ -11,7 +14,7 @@ const CreateProduct = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const initialState = {
+  const initialState: ProductFormData = {
     title: "",
     description: "",
     price: "",
@@ -24,7 +27,8 @@ const CreateProduct = () => {
     images: "",
   };
 
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = useState<ProductFormData>(initialState);
+
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleChange = (

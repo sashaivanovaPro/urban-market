@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ProductDetails } from "../../types/product";
 import { productService } from "../../services/productService";
+import { CreateProductFormData } from "../../types/createProductSchema";
 
 export const fetchProducts = createAsyncThunk("products/fetchAll", async () => {
   const data = await productService.getAll();
@@ -85,6 +86,46 @@ const productsSlice = createSlice({
     showTheBestDiscount: (state, action: PayloadAction<boolean>) => {
       state.filter.bestPrice = action.payload;
     },
+    addProduct: (state, action: PayloadAction<CreateProductFormData>) => {
+      const baseProduct = {
+        id: Date.now(),
+        title: action.payload.title,
+        description: action.payload.description,
+        price: action.payload.price,
+        category: action.payload.category,
+        brand: action.payload.brand,
+        stock: action.payload.stock,
+        thumbnail: action.payload.thumbnail,
+        discountPercentage: action.payload.discountPercentage ?? 0,
+        rating: action.payload.rating ?? 0,
+        isLiked: false,
+        images: Array.isArray(action.payload.images)
+          ? action.payload.images
+          : [],
+      };
+
+      const newProduct: ProductDetails = {
+        ...baseProduct,
+        tags: [],
+        weight: 0,
+        dimensions: { width: 0, height: 0, depth: 0 },
+        warrantyInformation: "Standard warranty",
+        shippingInformation: "Standard shipping",
+        availabilityStatus: "In Stock",
+        reviews: [],
+        returnPolicy: "30-day return policy",
+        minimumOrderQuantity: 1,
+        meta: {
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          barcode: `PROD-${Date.now()}`,
+          qrCode: `QRPROD-${Date.now()}`,
+        },
+      };
+
+      state.items.unshift(newProduct);
+      console.log("New product added:", newProduct);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -129,6 +170,7 @@ export const {
   showLikedProducts,
   showTheBestDiscount,
   resetProductsState,
+  addProduct,
 } = productsSlice.actions;
 
 export default productsSlice.reducer;
