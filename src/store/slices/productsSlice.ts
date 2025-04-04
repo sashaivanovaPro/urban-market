@@ -74,6 +74,7 @@ const productsSlice = createSlice({
     resetProductsState: (state) => {
       localStorage.removeItem("likedProducts");
       localStorage.removeItem("deletedProducts");
+      localStorage.removeItem("createdProducts");
 
       state.items = state.items.map((product) => ({
         ...product,
@@ -124,6 +125,14 @@ const productsSlice = createSlice({
       };
 
       state.items.unshift(newProduct);
+
+      const createdProductsJSON = localStorage.getItem("createdProducts");
+      const createdProducts = createdProductsJSON
+        ? JSON.parse(createdProductsJSON)
+        : [];
+      createdProducts.unshift(newProduct);
+      localStorage.setItem("createdProducts", JSON.stringify(createdProducts));
+
       console.log("New product added:", newProduct);
     },
   },
@@ -148,13 +157,28 @@ const productsSlice = createSlice({
           ? JSON.parse(deletedProductsJSON)
           : [];
 
+        // Получаем созданные продукты
+        const createdProductsJSON = localStorage.getItem("createdProducts");
+        const createdProducts = createdProductsJSON
+          ? JSON.parse(createdProductsJSON)
+          : [];
+
         // Фильтруем удаленные продукты и добавляем информацию о лайках
-        state.items = action.payload.products
+        const apiProducts = action.payload.products
           .filter((product) => !deletedProducts.includes(product.id))
           .map((product) => ({
             ...product,
             isLiked: likedProducts.includes(product.id),
           })) as ProductDetails[];
+
+        // Объединяем продукты из API и созданные продукты
+        state.items = [
+          ...createdProducts.map((product: ProductDetails) => ({
+            ...product,
+            isLiked: likedProducts.includes(product.id),
+          })),
+          ...apiProducts,
+        ];
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
