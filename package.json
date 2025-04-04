@@ -6,7 +6,7 @@
   "homepage": "https://sashaivanovapro.github.io/urban-market",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc && vite build && cp ./dist/index.html ./dist/404.html",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
@@ -21,7 +21,8 @@
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.4.0",
-    "styled-components": "^6.1.16"
+    "styled-components": "^6.1.16",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
