@@ -171,15 +171,20 @@ const productsSlice = createSlice({
             isLiked: likedProducts.includes(product.id),
           })) as ProductDetails[];
 
-        // Объединяем продукты из API и созданные продукты
-        state.items = [
-          ...createdProducts.map((product: ProductDetails) => ({
+        // Фильтруем созданные продукты, исключая удаленные
+        const filteredCreatedProducts = createdProducts
+          .filter(
+            (product: ProductDetails) => !deletedProducts.includes(product.id)
+          )
+          .map((product: ProductDetails) => ({
             ...product,
             isLiked: likedProducts.includes(product.id),
-          })),
-          ...apiProducts,
-        ];
+          }));
+
+        // Объединяем продукты из API и созданные продукты
+        state.items = [...filteredCreatedProducts, ...apiProducts];
       })
+
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
         state.items = [];
