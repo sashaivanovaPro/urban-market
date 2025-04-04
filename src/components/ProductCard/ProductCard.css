@@ -45,6 +45,9 @@
   -webkit-box-orient: vertical;
   line-clamp: 3;
   overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  max-height: 4.5em;
 }
 
 .product-card__price {
